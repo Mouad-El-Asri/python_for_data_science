@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ft_package"
+version = "1.0.0"
+description = "A sample test package"
+readme = "README.md"
+license = {text = "MIT License"}
+
+authors = [
+    {name = "Mouad El Asri", email = "elasri.mouad.2002@gmail.com"}
+]
+
+[project.urls]
+homepage = "https://github.com/Mouad-El-Asri/python_for_data_science/tree/main/Python_00_Starting/ex09"
+repository = "https://github.com/Mouad-El-Asri/python_for_data_science/tree/main/Python_00_Starting/ex09"
