@@ -2,6 +2,15 @@ import sys as system
 
 
 def main():
+    """
+        Converts a single input string to Morse code.
+
+        Expects one command-line argument:
+            An alphanumeric string.
+
+        Raises:
+            AssertionError: If arguments are invalid.
+    """
     try:
         if len(system.argv) != 2 or not \
            system.argv[1].replace(' ', '').isalnum():
