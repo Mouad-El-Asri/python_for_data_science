@@ -10,9 +10,9 @@ readme = "README.md"
 license = {text = "MIT License"}
 
 authors = [
-    {name = "Mouad El Asri", email = "elasri.mouad.2002@gmail.com"}
+    { name = "Mouad El Asri", email = "elasri.mouad.2002@gmail.com" }
 ]
 
 [project.urls]
-homepage = "https://github.com/Mouad-El-Asri/python_for_data_science/tree/main/Python_00_Starting/ex09"
-repository = "https://github.com/Mouad-El-Asri/python_for_data_science/tree/main/Python_00_Starting/ex09"
+homepage = "https://github.com/Mouad-El-Asri/python_for_data_science"
+repository = "https://github.com/Mouad-El-Asri/python_for_data_science"
