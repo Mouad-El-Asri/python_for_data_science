@@ -71,12 +71,12 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         bmi_arr = np.array(bmi)
 
         if not isinstance(limit, int):
-            raise ValueError('ValueError: Limit must be an integer.')
+            raise TypeError('TypeError: Limit must be an integer.')
         elif not all(isinstance(el, (int, float)) for el in bmi_arr):
             raise TypeError('TypeError: input list contain non-numeric values')
 
         return (bmi_arr > limit).tolist()
 
-    except (ValueError, TypeError) as e:
+    except TypeError as e:
         print(e)
         exit()
