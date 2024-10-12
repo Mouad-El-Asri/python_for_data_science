@@ -4,8 +4,26 @@ import matplotlib.pyplot as plt
 
 
 def ft_rotate(img: np.ndarray) -> np.ndarray:
-    rotated_img = np.rot90(img)
-    print(f'New shape after Transpose: {rotated_img.shape[:2]}')
+    """
+        Rotate an image 90 degrees.
+
+        Args:
+            img (np.ndarray): Input image as a 3D array.
+
+        Returns:
+            np.ndarray: Rotated grayscale image as a 2D array (width, height).
+    """
+    height, width, channels = img.shape
+    grayscale_img = img.reshape(height, width)
+
+    rotated_img = [[0] * height for el in range(width)]
+
+    for i in range(height):
+        for j in range(width):
+            rotated_img[width - 1 - j][i] = grayscale_img[i][j]
+
+    rotated_img = np.array(rotated_img)
+    print(f'New shape after Transpose: {rotated_img.shape}')
     return rotated_img
 
 
