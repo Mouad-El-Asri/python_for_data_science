@@ -23,19 +23,19 @@ def slice_me(family: list, start: int, end: int) -> list:
     """
     try:
         if not isinstance(family, list):
-            raise TypeError('TypeError: the family input is not a list')
+            raise TypeError('The family input is not a list')
         elif not all(isinstance(lst, list) for lst in family):
-            raise ValueError("ValueError: The provided list is not 2D.")
+            raise ValueError("The provided list is not 2D.")
 
         arr = np.array(family)
         print(f'My shape is : {arr.shape}')
 
         if not all(isinstance(el, int) for el in (start, end)):
-            raise TypeError('ValueError: Start and End must be integers.')
+            raise TypeError('Start and End must be integers.')
 
         new_arr = arr[start:end]
         print(f'My new shape is : {new_arr.shape}')
         return new_arr.tolist()
-    except (TypeError, ValueError) as e:
-        print(e)
+    except Exception as e:
+        print(f'{e.__class__.__name__}: {e}')
         return []

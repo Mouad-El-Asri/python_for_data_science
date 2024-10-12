@@ -23,26 +23,24 @@ def give_bmi(height: list[int | float], weight: list[int | float]) \
     """
     try:
         if not isinstance(height, list) or not isinstance(weight, list):
-            raise TypeError('TypeError: the input is not a list')
+            raise TypeError('The input is not a list')
         elif len(height) != len(weight):
-            raise ValueError('ValueError: Height and weight'
+            raise ValueError('Height and Weight'
                              ' lists must be of the same length.')
         elif not all(isinstance(h, (int, float)) for h in height) or \
                 not all(isinstance(w, (int, float)) for w in weight):
-            raise TypeError('TypeError: input lists contain'
-                            ' non-numeric values')
+            raise TypeError('Input lists contain non-numeric values')
 
         height_arr = np.array(height)
         weight_arr = np.array(weight)
 
         if np.any(height_arr == 0):
-            raise ZeroDivisionError('ZeroDivisionError: Height cannot'
-                                    ' be zero.')
+            raise ZeroDivisionError('Height cannot be zero.')
 
         return (weight_arr / height_arr ** 2).tolist()
 
-    except (ZeroDivisionError, ValueError, TypeError) as e:
-        print(e)
+    except Exception as e:
+        print(f'{e.__class__.__name__}: {e}')
         exit()
 
 
@@ -66,17 +64,17 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     """
     try:
         if not isinstance(bmi, list):
-            raise TypeError('TypeError: bmi input is not a list')
+            raise TypeError('Bmi input is not a list')
 
         bmi_arr = np.array(bmi)
 
         if not isinstance(limit, int):
-            raise TypeError('TypeError: Limit must be an integer.')
+            raise TypeError('Limit must be an integer.')
         elif not all(isinstance(el, (int, float)) for el in bmi_arr):
-            raise TypeError('TypeError: input list contain non-numeric values')
+            raise TypeError('Input list contain non-numeric values')
 
         return (bmi_arr > limit).tolist()
 
     except TypeError as e:
-        print(e)
+        print(f'{e.__class__.__name__}: {e}')
         exit()
