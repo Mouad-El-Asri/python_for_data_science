@@ -25,4 +25,4 @@ def ft_load(path: str) -> np.ndarray:
         return img
     except Exception as e:
         print(f'{e.__class__.__name__}: {e}')
-        return np.array([])
+        exit()
