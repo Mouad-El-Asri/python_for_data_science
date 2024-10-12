@@ -21,22 +21,29 @@ def give_bmi(height: list[int | float], weight: list[int | float]) \
             if the inputs are not lists.
             ValueError: If the height and weight lists have different lengths.
     """
-    if not isinstance(height, list) or not isinstance(weight, list):
-        raise TypeError('TypeError: the input is not a list')
-    elif len(height) != len(weight):
-        raise ValueError('ValueError: Height and weight'
-                         ' lists must be of the same length.')
+    try:
+        if not isinstance(height, list) or not isinstance(weight, list):
+            raise TypeError('TypeError: the input is not a list')
+        elif len(height) != len(weight):
+            raise ValueError('ValueError: Height and weight'
+                             ' lists must be of the same length.')
+        elif not all(isinstance(h, (int, float)) for h in height) or \
+                not all(isinstance(w, (int, float)) for w in weight):
+            raise TypeError('TypeError: input lists contain'
+                            ' non-numeric values')
 
-    height_arr = np.array(height)
-    weight_arr = np.array(weight)
+        height_arr = np.array(height)
+        weight_arr = np.array(weight)
 
-    if np.any(height_arr == 0):
-        raise ZeroDivisionError('ZeroDivisionError: Height cannot be zero.')
-    elif not all(isinstance(h, (int, float)) for h in height_arr) or \
-            not all(isinstance(w, (int, float)) for w in weight_arr):
-        raise TypeError('TypeError: input lists contain non-numeric values')
+        if np.any(height_arr == 0):
+            raise ZeroDivisionError('ZeroDivisionError: Height cannot'
+                                    ' be zero.')
 
-    return (weight_arr / height_arr ** 2).tolist()
+        return (weight_arr / height_arr ** 2).tolist()
+
+    except (ZeroDivisionError, ValueError, TypeError) as e:
+        print(e)
+        exit()
 
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
@@ -57,31 +64,19 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
             TypeError: If the bmi list contains non-numeric values
             or if the inputs are not lists.
     """
-    if not isinstance(bmi, list):
-        raise TypeError('TypeError: bmi input is not a list')
-
-    bmi_arr = np.array(bmi)
-
-    if not isinstance(limit, int):
-        raise ValueError('ValueError: Limit must be an integer.')
-    elif not all(isinstance(el, (int, float)) for el in bmi_arr):
-        raise TypeError('TypeError: input list contain non-numeric values')
-
-    return (bmi_arr > limit).tolist()
-
-
-def main():
     try:
-        height = [2.71, 1.15]
-        weight = [165.3, 38.4]
+        if not isinstance(bmi, list):
+            raise TypeError('TypeError: bmi input is not a list')
 
-        bmi = give_bmi(height, weight)
-        print(bmi, type(bmi))
-        print(apply_limit(bmi, 26))
+        bmi_arr = np.array(bmi)
 
-    except (ZeroDivisionError, ValueError, TypeError) as e:
+        if not isinstance(limit, int):
+            raise ValueError('ValueError: Limit must be an integer.')
+        elif not all(isinstance(el, (int, float)) for el in bmi_arr):
+            raise TypeError('TypeError: input list contain non-numeric values')
+
+        return (bmi_arr > limit).tolist()
+
+    except (ValueError, TypeError) as e:
         print(e)
-
-
-if __name__ == '__main__':
-    main()
+        exit()
