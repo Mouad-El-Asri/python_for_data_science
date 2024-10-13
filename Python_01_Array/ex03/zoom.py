@@ -22,7 +22,8 @@ def ft_zoom(rgb_img: np.ndarray) -> np.ndarray:
 
     zoomed_img_shape = zoomed_img.shape
 
-    print(f'New shape after slicing: {zoomed_img_shape} or {zoomed_img_shape[:2]}')
+    print(f'New shape after slicing: {zoomed_img_shape} '
+          f'or {zoomed_img_shape[:2]}')
 
     return zoomed_img
 
