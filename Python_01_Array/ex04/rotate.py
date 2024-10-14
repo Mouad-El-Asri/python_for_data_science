@@ -38,8 +38,8 @@ def ft_zoom(rgb_img: np.ndarray) -> np.ndarray:
             np.ndarray: A numpy 3D array of the zoomed grayscale image.
     """
     if len(rgb_img.shape) != 2 and rgb_img.shape[2] != 1:
-        grayscale_img = np.dot(rgb_img[:, :, :3],
-                               [[0.2989], [0.5870], [0.1140]]).astype(int)
+        grayscale_img = np.array([[[sum(int(el / 3) for el in col)]
+                                   for col in row] for row in rgb_img])
 
     y_min, y_max, x_min, x_max = 100, 500, 450, 850
     zoomed_img = grayscale_img[y_min:y_max, x_min:x_max]
