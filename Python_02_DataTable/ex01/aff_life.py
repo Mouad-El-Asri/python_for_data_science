@@ -11,10 +11,10 @@ def aff_life(path: str) -> None:
             life expectancy information.
     """
     df = load(path)
-    df_country = df.query('country == "Morocco"')
-    df_country = df_country.drop('country', axis='columns').transpose()
+    df_mororcco = df.query('country == "Morocco"')
+    df_mororcco = df_mororcco.drop('country', axis='columns').transpose()
 
-    df_country.plot(kind='line', figsize=(8, 6))
+    df_mororcco.plot(kind='line', figsize=(8, 6))
 
     plt.title('Morocco Life Expectancy Projections')
     plt.xlabel('Year')
